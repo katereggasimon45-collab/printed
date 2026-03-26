@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+<section class="services-section">
+
+    <!-- ===== PAGE HEADER ===== -->
+    <div class="page-header">
+        <h1>Our Services</h1>
+        <p>Everything you need for professional printing in one place</p>
+    </div>
+
+    <!-- ===== FILTER BUTTONS ===== -->
+    <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="branding">Branding</button>
+        <button class="filter-btn" data-filter="large-format">Large Format</button>
+        <button class="filter-btn" data-filter="packaging">Packaging</button>
+        <button class="filter-btn" data-filter="photo">Photo</button>
+        <button class="filter-btn" data-filter="invitations">Invitations</button>
+    </div>
+
+    <!-- ===== SERVICES GRID ===== -->
+    <div class="services-grid">
+
+        <article class="service-card" data-animate data-category="document">
+            <img src="{{ url_for('static', filename='images/document.png') }}" alt="Document Printing">
+            <h3>Document Printing</h3>
+            <p>Notes, reports, assignments, photocopying, scanning, binding</p>
+            <a href="/services/document-printing" class="btn">Learn More</a>
+        </article>
+
+        <article class="service-card" data-animate data-category="branding">
+            <img src="{{ url_for('static', filename='images/branding.png') }}" alt="Branding">
+            <h3>Branding</h3>
+            <p>Business cards, flyers, brochures, letterheads, envelopes</p>
+            <a href="/services/branding" class="btn">Learn More</a>
+        </article>
+
+        <article class="service-card" data-animate data-category="large-format">
+            <img src="{{ url_for('static', filename='images/large-format.png') }}" alt="Large Format Printing">
+            <h3>Large Format Printing</h3>
+            <p>Banners, posters, billboards, exhibition stands</p>
+            <a href="/services/large-format" class="btn">Learn More</a>
+        </article>
+
+        <article class="service-card" data-animate data-category="invitations">
+            <img src="{{ url_for('static', filename='images/invitations.png') }}" alt="Custom Invitations">
+            <h3>Custom Invitations & Cards</h3>
+            <p>Wedding invitations, birthday cards, event flyers, greeting cards</p>
+            <a href="/services/invitations" class="btn">Learn More</a>
+        </article>
+
+        <article class="service-card" data-animate data-category="branding promotional">
+            <img src="{{ url_for('static', filename='images/promotional.png') }}" alt="Promotional Materials">
+            <h3>Promotional Materials</h3>
+            <p>Stickers, labels, calendars, branded merchandise printing</p>
+            <a href="/services/promotional" class="btn">Learn More</a>
+        </article>
+
+        <article class="service-card" data-animate data-category="books">
+            <img src="{{ url_for('static', filename='images/books.png') }}" alt="Book Printing">
+            <h3>Book & Magazine Printing</h3>
+            <p>Magazines, catalogs, booklets, journals, newsletters</p>
+            <a href="/services/books" class="btn">Learn More</a>
+        </article>
+
+        <article class="service-card" data-animate data-category="photo">
+            <img src="{{ url_for('static', filename='images/photo.png') }}" alt="Photo Printing">
+            <h3>Photo Printing</h3>
+            <p>High-quality photo prints, canvas prints, framed prints</p>
+            <a href="/services/photo-printing" class="btn">Learn More</a>
+        </article>
+
+        <article class="service-card" data-animate data-category="packaging">
+            <img src="{{ url_for('static', filename='images/packaging.png') }}" alt="Packaging">
+            <h3>Custom Packaging</h3>
+            <p>Boxes, bags, product labels, tags for branding</p>
+            <a href="/services/packaging" class="btn">Learn More</a>
+        </article>
+
+    </div>
+
+    <!-- ===== WHATSAPP CONTACT ===== -->
+    <div class="whatsapp-contact">
+        <a href="https://wa.me/256745938920" target="_blank">
+            <i class="fab fa-whatsapp"></i> Chat with us on WhatsApp
+        </a>
+    </div>
+
+    <!-- ===== FULLSCREEN LIGHTBOX ===== -->
+    
+</section>
+
+<script>
+// ===== FILTER BUTTONS =====
+const filterBtns = document.querySelectorAll('.filter-btn');
+const serviceCards = document.querySelectorAll('.service-card');
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+        serviceCards.forEach(card => {
+            card.style.display = (filter === 'all' || card.dataset.category.includes(filter)) ? 'block' : 'none';
+        });
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    });
+});
+
+// ===== SCROLL FADE-UP ANIMATION =====
+const animatedItems = document.querySelectorAll('[data-animate]');
+function checkAnimation() {
+    const triggerBottom = window.innerHeight * 0.9;
+    animatedItems.forEach(item => {
+        const itemTop = item.getBoundingClientRect().top;
+        if (itemTop < triggerBottom) item.classList.add('animate');
+    });
+}
+window.addEventListener('scroll', checkAnimation);
+window.addEventListener('load', checkAnimation);
+
+// ===== LIGHTBOX FUNCTIONALITY =====
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const closeBtn = document.getElementById('lightbox-close');
+
+document.querySelectorAll('.service-card img').forEach(img => {
+    img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+    });
+});
+
+closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
+lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) lightbox.style.display = 'none';
+});
+</script>
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+<section class="contact-section">
+
+    <!-- HEADER -->
+    <div class="contact-header">
+        <h1>Contact / Order Form</h1>
+        <p>Send us your printing request or questions</p>
+    </div>
+
+    <!-- FLASH MESSAGES -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <!-- MAIN CONTENT -->
+    <div class="contact-container">
+
+        <!-- FORM -->
+        <form method="POST" class="contact-form">
+            {{ form.csrf_token }}
+
+            <div class="input-group">
+                {{ form.name(class="form-input", placeholder="Your Name", required=True) }}
+            </div>
+
+            <div class="input-group">
+                {{ form.email(class="form-input", placeholder="Your Email", required=True) }}
+            </div>
+
+            <div class="input-group">
+                {{ form.phone(class="form-input", placeholder="Your Phone Number", required=True) }}
+            </div>
+
+            <div class="input-group">
+                {{ form.message(class="form-input", rows=5, placeholder="Your message or order details", required=True) }}
+            </div>
+
+            <button type="submit" class="btn-primary">
+                Send Request 🚀
+            </button>
+        </form>
+
+        <!-- CONTACT INFO -->
+        <div class="contact-info">
+            <h3>Get in Touch</h3>
+            <p><i class="fas fa-phone"></i> 0745 938 920</p>
+            <p><i class="fas fa-map-marker-alt"></i> Nasser Road, Kampala</p>
+
+            <a href="https://wa.me/256745938920" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/256745938920" 
+   target="_blank" 
+   class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+</a>
+<script>
+    
+const form = document.getElementById("contactForm");
+const btn = document.getElementById("submitBtn");
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    btn.innerText = "Sending...";
+    btn.disabled = true;
+
+    const formData = new FormData(form);
+
+    try {
+        const response = await fetch("", {
+            method: "POST",
+            body: formData
+        });
+
+        if (response.ok) {
+            const name = formData.get("name");
+            const phone = formData.get("phone");
+            const message = formData.get("message");
+
+            // WhatsApp message
+            const text = `Hello, my name is ${name}.
+Phone: ${phone}
+Message: ${message}`;
+
+            const whatsappURL = `https://wa.me/256745938920?text=${encodeURIComponent(text)}`;
+
+            // redirect to WhatsApp
+            window.location.href = whatsappURL;
+        } else {
+            alert("Something went wrong. Try again.");
+        }
+    } catch (error) {
+        alert("Error sending form.");
+    }
+
+    btn.innerText = "Send Request 🚀";
+    btn.disabled = false;
+});
+
+</script>
+{% endblock %}

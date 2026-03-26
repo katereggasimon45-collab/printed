@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="service-detail">
+
+    <!-- HERO -->
+    <div class="hero-compact-small">
+        <h1>Book & Magazine Printing</h1>
+        <p>High-quality printing for books, magazines, catalogs, journals, and newsletters</p>
+        <a href="https://wa.me/256745938920" class="btn primary">
+            <i class="fab fa-whatsapp"></i> Order on WhatsApp
+        </a>
+    </div>
+
+    <!-- SERVICES GRID -->
+    <div class="section">
+        <h2>Our Printing Services</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Books</h3>
+                <p>Custom book printing for authors, publishers, and organizations.</p>
+            </div>
+            <div class="card">
+                <h3>Magazines & Catalogs</h3>
+                <p>Professional layouts and vibrant color printing for magazines and catalogs.</p>
+            </div>
+            <div class="card">
+                <h3>Journals & Notebooks</h3>
+                <p>High-quality journals and notebooks for personal or corporate use.</p>
+            </div>
+            <div class="card">
+                <h3>Newsletters</h3>
+                <p>Engaging newsletters to keep your audience informed and connected.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="section">
+        <h2>Sample Work</h2>
+        <div class="gallery">
+            <img src="{{ url_for('static', filename='images/books1.jpg') }}" alt="Book Printing">
+            <img src="{{ url_for('static', filename='images/books2.jpg') }}" alt="Magazine Printing">
+            <img src="{{ url_for('static', filename='images/books3.jpg') }}" alt="Catalog Printing">
+        </div>
+    </div>
+
+    <!-- WHY CHOOSE US -->
+    <div class="section highlight">
+        <h2>Why Choose Our Book & Magazine Printing</h2>
+        <div class="grid">
+            <div class="card">✔ High-Quality Prints</div>
+            <div class="card">🎨 Custom Layouts</div>
+            <div class="card">⚡ Fast Turnaround</div>
+            <div class="card">💰 Competitive Pricing</div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta">
+        <h2>Get Your Books & Magazines Printed Today</h2>
+        <p>Contact us for professional printing solutions for your publications.</p>
+        <a href="https://wa.me/256745938920" class="btn primary">
+            Chat on WhatsApp
+        </a>
+    </div>
+
+    <a href="/services" class="back-btn">← Back to Services</a>
+
+</section>
+{% endblock %}

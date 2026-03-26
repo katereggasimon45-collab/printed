@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elisabath Printers</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/bad.png') }}">
+    <meta name="description" content="Elisabath Printers offers professional printing services including banners, business cards, and branding.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">QUEEN ELIZABATH PRINTERS</div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            
+            
+            
+            
+        </div>
+    </nav>
+</header>
+
+<main class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+</main>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/256745938920" class="whatsapp" target="_blank">💬</a>
+
+<footer class="footer">
+    <p>© 2026 Elisabath Printers Limited | All Rights Reserved</p>
+</footer>
+
+</body>
+
+<script>
+// Hero slider
+let current = 0;
+const slides = document.querySelectorAll('.hero-slider img');
+setInterval(() => {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+}, 5000);
+
+// Animated counters
+const counters = document.querySelectorAll('.counter');
+counters.forEach(counter => {
+    const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const increment = target / 200;
+        if(count < target) {
+            counter.innerText = Math.ceil(count + increment);
+            setTimeout(updateCount, 10);
+        } else {
+            counter.innerText = target;
+        }
+    };
+    updateCount();
+});
+
+// Scroll animation for services cards
+const animateOnScroll = () => {
+    const elements = document.querySelectorAll('[data-animate]');
+    const windowBottom = window.innerHeight + window.scrollY;
+
+    elements.forEach(el => {
+        const elTop = el.getBoundingClientRect().top + window.scrollY;
+        if(windowBottom > elTop + 50) { // trigger a bit earlier
+            el.classList.add('visible');
+        }
+    });
+};
+
+// Initial check
+animateOnScroll();
+
+// Listen to scroll
+window.addEventListener('scroll', animateOnScroll);
+// SCROLL TO SERVICES WHEN BUTTON CLICKED
+document.querySelectorAll('a[href="#services"]').forEach(btn => {
+    btn.addEventListener('click', function(e){
+        e.preventDefault();
+        const servicesSection = document.getElementById('services');
+        servicesSection.classList.add('visible'); // Fade in
+        servicesSection.scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+// REVEAL CARDS ON SCROLL
+const animatedElements = document.querySelectorAll('[data-animate]');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+        }
+    });
+},{ threshold: 0.2 });
+animatedElements.forEach(el => observer.observe(el));
+</script>
+
+</html>

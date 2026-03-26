@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- ===== HERO SECTION ===== -->
+<section class="hero">
+    <div class="hero-slider">
+        <img src="{{ url_for('static', filename='images/banner1.jpg') }}" class="active" alt="Printing Banner 1">
+        <img src="{{ url_for('static', filename='images/banner2.jpg') }}" alt="Printing Banner 2">
+        <img src="{{ url_for('static', filename='images/banner3.jpg') }}" alt="Printing Banner 3">
+    </div>
+
+    <div class="hero-content">
+        <h1>Print <span>Bold.</span><br>Stand Out.</h1>
+        <p>At <strong>Elizabath Printers</strong> on <strong>Nasser Road</strong>, we deliver high-quality printing solutions – banners, business cards, flyers, brochures, and more – to make your brand unforgettable.</p>
+        <div class="hero-buttons">
+            <a href="#services-section" id="services-btn" class="hero-btn">Our Services</a>
+            <a href="{{ url_for('workdone') }}" class="hero-btn-outline">Work Done</a>
+            <a href="/contact" class="hero-btn-outline">Contact Us</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SERVICES SECTION ===== -->
+<section id="services-section" class="services-section">
+    {% include "services.html" %}
+</section>
+
+<!-- ===== ABOUT US SECTION ===== -->
+<section class="about fade-in">
+    <div class="about-container">
+        <div class="about-text">
+            <h2 class="section-title">About Us</h2>
+            <p class="section-subtitle">
+                <strong>Elizabath Printers</strong>, located on <strong>Nasser Road, Kampala</strong>, provides professional printing solutions that elevate your brand. From impactful banners and premium business cards to elegant flyers and brochures, we combine creativity, precision, and quality to bring your vision to life.
+            </p>
+            <p class="about-highlight">
+                <em>Our mission: To deliver innovative, reliable, and professional printing services that make your brand unforgettable.</em>
+            </p>
+            <div class="about-contact">
+                <p>📍 Nasser Road, Kampala, Uganda</p>
+                <p>📞 <a href="tel:+256745938920">+256 745 938 920</a></p>
+                <p>💬 <a href="https://wa.me/256745938920" target="_blank">Chat on WhatsApp</a></p>
+            </div>
+        </div>
+        <div class="about-image">
+            <img src="{{ url_for('static', filename='images/banner1.jpg') }}" alt="Professional Printing Services">
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    // ===== HERO SLIDER =====
+    const slides = document.querySelectorAll('.hero-slider img');
+    let current = 0;
+    if(slides.length > 0){
+        setInterval(() => {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }, 5000);
+    }
+
+    // ===== SERVICES BUTTON REVEAL =====
+    const btn = document.getElementById("services-btn");
+    const section = document.getElementById("services-section");
+    if(btn && section){
+        section.style.display = "none"; // hide initially
+        btn.addEventListener("click", function(e){
+            e.preventDefault();
+            section.style.display = "block";
+            section.classList.add("visible");
+            section.scrollIntoView({ behavior: "smooth" });
+        });
+    }
+
+    // ===== FADE-IN ON SCROLL =====
+    const faders = document.querySelectorAll('.fade-in, .work-card, #services-section .service-card');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    faders.forEach(fader => observer.observe(fader));
+
+});
+</script>
+{% endblock %}

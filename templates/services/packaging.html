@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="service-detail">
+
+    <!-- HERO -->
+    <div class="hero-compact-small">
+        <h1>Custom Packaging</h1>
+        <p>Boxes, bags, product labels, and tags to showcase your brand professionally</p>
+        <a href="https://wa.me/256745938920" class="btn primary">
+            <i class="fab fa-whatsapp"></i> Order on WhatsApp
+        </a>
+    </div>
+
+    <!-- SERVICES GRID -->
+    <div class="section">
+        <h2>Our Packaging Solutions</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Custom Boxes</h3>
+                <p>High-quality boxes in various sizes for products, gifts, and retail packaging.</p>
+            </div>
+            <div class="card">
+                <h3>Custom Bags</h3>
+                <p>Printed bags for retail, events, or promotional purposes.</p>
+            </div>
+            <div class="card">
+                <h3>Product Labels</h3>
+                <p>Custom labels for bottles, jars, and other product packaging.</p>
+            </div>
+            <div class="card">
+                <h3>Tags & Branding Materials</h3>
+                <p>Hang tags and other branding materials to enhance your product appeal.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="section">
+        <h2>Sample Work</h2>
+        <div class="gallery">
+            <img src="{{ url_for('static', filename='images/packaging1.jpg') }}" alt="Custom Boxes">
+            <img src="{{ url_for('static', filename='images/packaging2.jpg') }}" alt="Product Labels">
+            <img src="{{ url_for('static', filename='images/packaging3.jpg') }}" alt="Custom Bags">
+        </div>
+    </div>
+
+    <!-- WHY CHOOSE US -->
+    <div class="section highlight">
+        <h2>Why Choose Our Packaging Services</h2>
+        <div class="grid">
+            <div class="card">✔ Professional Designs</div>
+            <div class="card">🎨 Custom Sizes & Branding</div>
+            <div class="card">⚡ Fast Delivery</div>
+            <div class="card">💰 Affordable Prices</div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta">
+        <h2>Enhance Your Products with Custom Packaging</h2>
+        <p>Contact us today to design and print your product packaging.</p>
+        <a href="https://wa.me/256745938920" class="btn primary">
+            Chat on WhatsApp
+        </a>
+    </div>
+
+    <a href="/services" class="back-btn">← Back to Services</a>
+
+</section>
+{% endblock %}

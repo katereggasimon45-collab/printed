@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="service-detail">
+
+    <!-- HERO -->
+    <div class="hero-compact-small">
+        <h1>Large Format Printing</h1>
+        <p>Banners, posters, exhibition stands, and billboards for maximum impact</p>
+        <a href="https://wa.me/256745938920" class="btn primary">
+            <i class="fab fa-whatsapp"></i> Order on WhatsApp
+        </a>
+    </div>
+
+    <!-- OUR SERVICES -->
+    <div class="section">
+        <h2>Our Large Format Solutions</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Banners</h3>
+                <p>High-quality indoor and outdoor banners in custom sizes.</p>
+            </div>
+            <div class="card">
+                <h3>Posters</h3>
+                <p>Vibrant posters for events, promotions, and advertising campaigns.</p>
+            </div>
+            <div class="card">
+                <h3>Billboards</h3>
+                <p>Eye-catching large-scale advertising to reach more customers.</p>
+            </div>
+            <div class="card">
+                <h3>Exhibition Stands</h3>
+                <p>Professional displays that attract attention at trade shows.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="section">
+        <h2>Sample Work</h2>
+        <div class="gallery">
+            <img src="{{ url_for('static', filename='images/large-format1.jpg') }}" alt="Large Format Banner 1">
+            <img src="{{ url_for('static', filename='images/large-format2.jpg') }}" alt="Large Format Poster 2">
+            <img src="{{ url_for('static', filename='images/large-format3.jpg') }}" alt="Exhibition Stand 3">
+        </div>
+    </div>
+
+    <!-- WHY CHOOSE US -->
+    <div class="section highlight">
+        <h2>Why Choose Our Large Format Printing</h2>
+        <div class="grid">
+            <div class="card">✔ High Resolution Prints</div>
+            <div class="card">⚡ Fast Turnaround</div>
+            <div class="card">💰 Competitive Pricing</div>
+            <div class="card">🎨 Custom Sizes & Designs</div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta">
+        <h2>Ready to Print Big?</h2>
+        <p>Contact us today for your custom large-format printing project.</p>
+        <a href="https://wa.me/256745938920" class="btn primary">
+            Chat on WhatsApp
+        </a>
+    </div>
+
+    <a href="/services" class="back-btn">← Back to Services</a>
+
+</section>
+{% endblock %}

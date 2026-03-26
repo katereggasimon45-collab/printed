@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="service-detail">
+
+    
+ <!-- COMPACT HERO -->
+<div class="hero-compact-small">
+    <h1>Branding Services</h1>
+    <p>High-quality printing to elevate your business identity</p>
+    <a href="https://wa.me/256745938920" class="btn primary">
+        <i class="fab fa-whatsapp"></i> Order on WhatsApp
+    </a>
+</div>
+    <!-- OUR SERVICES -->
+    <div class="section">
+        <h2>Our Branding Solutions</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Business Cards</h3>
+                <p>High-quality cards that leave a lasting impression.</p>
+            </div>
+            <div class="card">
+                <h3>Flyers</h3>
+                <p>Promote your business with eye-catching designs.</p>
+            </div>
+            <div class="card">
+                <h3>Brochures</h3>
+                <p>Detailed and professional marketing materials.</p>
+            </div>
+            <div class="card">
+                <h3>Letterheads</h3>
+                <p>Give your documents a professional look.</p>
+            </div>
+            <div class="card">
+                <h3>Envelopes</h3>
+                <p>Branded envelopes for your business identity.</p>
+            </div>
+            <div class="card">
+                <h3>Stickers & Labels</h3>
+                <p>Perfect for packaging and promotions.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="section">
+        <h2>Sample Work</h2>
+        <div class="gallery">
+            <img src="{{ url_for('static', filename='images/branding1.jpg') }}" alt="Branding Sample 1">
+            <img src="{{ url_for('static', filename='images/branding2.jpg') }}" alt="Branding Sample 2">
+            <img src="{{ url_for('static', filename='images/branding3.jpg') }}" alt="Branding Sample 3">
+        </div>
+    </div>
+
+    <!-- WHY CHOOSE US -->
+    <div class="section highlight">
+        <h2>Why Choose Us</h2>
+        <div class="grid">
+            <div class="card">✔ High Quality Printing</div>
+            <div class="card">⚡ Fast Turnaround</div>
+            <div class="card">💰 Affordable Prices</div>
+            <div class="card">🎨 Custom Design Support</div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta">
+        <h2>Ready to Grow Your Brand?</h2>
+        <p>Send us your design or let us create one for you.</p>
+        <a href="https://wa.me/256745938920" class="btn primary">
+            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+        </a>
+    </div>
+
+    <a href="/services" class="back-btn">← Back to Services</a>
+
+</section>
+{% endblock %}
