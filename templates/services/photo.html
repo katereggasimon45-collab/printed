@@ -1,71 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="service-detail">
 
-    <!-- HERO -->
-    <div class="hero-compact-small">
+<!-- HERO -->
+<section class="work-banner">
+    <img src="{{ url_for('static', filename='images/photo1.jpg') }}" alt="Photo Printing Banner">
+
+    <div class="banner-overlay">
         <h1>Photo Printing</h1>
         <p>High-quality photo prints, canvas prints, and framed prints to preserve your memories</p>
-        <a href="https://wa.me/256745938920" class="btn primary">
-            <i class="fab fa-whatsapp"></i> Order on WhatsApp
-        </a>
-    </div>
 
-    <!-- SERVICES GRID -->
-    <div class="section">
-        <h2>Our Photo Printing Services</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Standard Photo Prints</h3>
-                <p>High-resolution prints in various sizes for personal or professional use.</p>
-            </div>
-            <div class="card">
-                <h3>Canvas Prints</h3>
-                <p>Beautiful canvas prints for home, office, or gifting purposes.</p>
-            </div>
-            <div class="card">
-                <h3>Framed Prints</h3>
-                <p>Custom framing options for your favorite photos and artworks.</p>
-            </div>
-            <div class="card">
-                <h3>Photo Gifts</h3>
-                <p>Create personalized photo gifts like albums, calendars, and more.</p>
-            </div>
+        <div style="margin-top:20px;">
+            <a href="https://wa.me/256745938920?text=Hello,%20I%20need%20photo%20printing%20services"
+               class="btn">
+                <i class="fab fa-whatsapp"></i> Order on WhatsApp
+            </a>
         </div>
     </div>
-
-    <!-- GALLERY -->
-    <div class="section">
-        <h2>Sample Work</h2>
-        <div class="gallery">
-            <img src="{{ url_for('static', filename='images/photo1.jpg') }}" alt="Standard Photo Print">
-            <img src="{{ url_for('static', filename='images/photo2.jpg') }}" alt="Canvas Print">
-            <img src="{{ url_for('static', filename='images/photo3.jpg') }}" alt="Framed Print">
-        </div>
-    </div>
-
-    <!-- WHY CHOOSE US -->
-    <div class="section highlight">
-        <h2>Why Choose Our Photo Printing</h2>
-        <div class="grid">
-            <div class="card">✔ Premium Quality Prints</div>
-            <div class="card">🎨 Custom Sizes & Finishes</div>
-            <div class="card">⚡ Fast Turnaround</div>
-            <div class="card">💰 Affordable Pricing</div>
-        </div>
-    </div>
-
-    <!-- CTA -->
-    <div class="cta">
-        <h2>Preserve Your Memories with Professional Photo Prints</h2>
-        <p>Contact us today to print your photos beautifully.</p>
-        <a href="https://wa.me/256745938920" class="btn primary">
-            Chat on WhatsApp
-        </a>
-    </div>
-
-    <a href="/services" class="back-btn">← Back to Services</a>
-
 </section>
-{% endblock %}
+
+<!-- SERVICES -->
+<section>
+    <div class="services-section">
+        <div class="page-header">
+            <h2>Our Photo Printing Services</h2>
+            <p>Beautiful prints for personal

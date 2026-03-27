@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -14,15 +14,7 @@
         <p>Everything you need for professional printing in one place</p>
     </div>
 
-    <!-- ===== FILTER BUTTONS ===== -->
-    <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="branding">Branding</button>
-        <button class="filter-btn" data-filter="large-format">Large Format</button>
-        <button class="filter-btn" data-filter="packaging">Packaging</button>
-        <button class="filter-btn" data-filter="photo">Photo</button>
-        <button class="filter-btn" data-filter="invitations">Invitations</button>
-    </div>
+    
 
     <!-- ===== SERVICES GRID ===== -->
     <div class="services-grid">
@@ -92,38 +84,52 @@
         </a>
     </div>
 
-    <!-- ===== FULLSCREEN LIGHTBOX ===== -->
-    
 </section>
 
+<!-- ===== LIGHTBOX ===== -->
+<div id="lightbox" class="lightbox">
+    <span id="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="" alt="">
+</div>
+
 <script>
-// ===== FILTER BUTTONS =====
+// ===== FILTER BUTTONS (FIXED) =====
 const filterBtns = document.querySelectorAll('.filter-btn');
 const serviceCards = document.querySelectorAll('.service-card');
+
 filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         const filter = btn.dataset.filter;
+
         serviceCards.forEach(card => {
-            card.style.display = (filter === 'all' || card.dataset.category.includes(filter)) ? 'block' : 'none';
+            const categories = card.dataset.category.split(" ");
+            const match = filter === 'all' || categories.includes(filter);
+            card.style.display = match ? 'block' : 'none';
         });
+
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
     });
 });
 
-// ===== SCROLL FADE-UP ANIMATION =====
+// ===== SCROLL ANIMATION =====
 const animatedItems = document.querySelectorAll('[data-animate]');
+
 function checkAnimation() {
     const triggerBottom = window.innerHeight * 0.9;
+
     animatedItems.forEach(item => {
         const itemTop = item.getBoundingClientRect().top;
-        if (itemTop < triggerBottom) item.classList.add('animate');
+        if (itemTop < triggerBottom) {
+            item.classList.add('animate');
+        }
     });
 }
+
 window.addEventListener('scroll', checkAnimation);
 window.addEventListener('load', checkAnimation);
 
-// ===== LIGHTBOX FUNCTIONALITY =====
+// ===== LIGHTBOX =====
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 const closeBtn = document.getElementById('lightbox-close');
@@ -132,13 +138,18 @@ document.querySelectorAll('.service-card img').forEach(img => {
     img.addEventListener('click', () => {
         lightbox.style.display = 'flex';
         lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
     });
 });
 
-closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
+closeBtn.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+});
+
 lightbox.addEventListener('click', e => {
-    if (e.target === lightbox) lightbox.style.display = 'none';
+    if (e.target === lightbox) {
+        lightbox.style.display = 'none';
+    }
 });
 </script>
+
 {% endblock %}

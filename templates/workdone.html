@@ -7,83 +7,74 @@
 
 {% block content %}
 
-<!-- ===== TOP BANNER IMAGE WITH GRADIENT & TEXT ===== -->
+<!-- ===== TOP BANNER ===== -->
 <section class="work-banner">
-    <img src="{{ url_for('static', filename='images/bad.png') }}" alt="Our Work Banner">
+    <img src="{{ url_for('static', filename='images/bad.png') }}" alt="Our Printing Work">
     <div class="banner-overlay">
-        
-        
+        <h1>Our Work</h1>
+        <p>Creative, high-quality printing projects that make brands stand out</p>
     </div>
 </section>
 
 <!-- ===== TITLE ===== -->
 <section class="work-header">
-    <h1>Our Work</h1>
-    <p>High-quality printing projects delivered with precision and creativity</p>
+    <h2>Portfolio</h2>
+    <p>Explore some of our recent printing designs and completed jobs</p>
 </section>
 
 <!-- ===== WORK GRID ===== -->
 <section class="work-section">
-    <div class="work-grid masonry">
+    <div class="work-grid">
 
         <div class="work-card animate-on-scroll">
-            <img data-src="{{ url_for('static', filename='images/f1.png') }}" alt="Project 1">
+            <img src="{{ url_for('static', filename='images/f1.png') }}" loading="lazy" alt="Banner Design">
         </div>
 
         <div class="work-card animate-on-scroll">
-            <img data-src="{{ url_for('static', filename='images/f3.png') }}" alt="Project 2">
-        </div>
-        
-        <div class="work-card animate-on-scroll">
-            <img data-src="{{ url_for('static', filename='images/12.png') }}" alt="Project 2">
+            <img src="{{ url_for('static', filename='images/f3.png') }}" loading="lazy" alt="Business Card Design">
         </div>
         
         <div class="work-card animate-on-scroll">
-            <img data-src="{{ url_for('static', filename='images/09.png') }}" alt="Project 2">
+            <img src="{{ url_for('static', filename='images/12.png') }}" loading="lazy" alt="Flyer Print">
+        </div>
+        
+        <div class="work-card animate-on-scroll">
+            <img src="{{ url_for('static', filename='images/09.png') }}" loading="lazy" alt="Poster Design">
         </div>
 
         <div class="work-card animate-on-scroll">
-            <img data-src="{{ url_for('static', filename='images/f4.png') }}" alt="Project 3">
+            <img src="{{ url_for('static', filename='images/f4.png') }}" loading="lazy" alt="Branding Work">
         </div>
 
         <div class="work-card animate-on-scroll">
-            <img data-src="{{ url_for('static', filename='images/f6.png') }}" alt="Project 4">
+            <img src="{{ url_for('static', filename='images/f6.png') }}" loading="lazy" alt="Large Format Print">
         </div>
 
         <div class="work-card animate-on-scroll">
-            <img data-src="{{ url_for('static', filename='images/b.png') }}" alt="Project 5">
+            <img src="{{ url_for('static', filename='images/b.png') }}" loading="lazy" alt="Sticker Printing">
         </div>
 
         <div class="work-card animate-on-scroll">
-            <img data-src="{{ url_for('static', filename='images/r.png') }}" alt="Project 6">
+            <img src="{{ url_for('static', filename='images/r.png') }}" loading="lazy" alt="Custom Design Work">
         </div>
-
-    </div>
-</section>
-
-<!-- ===== LAZY LOAD + SCROLL ANIMATION SCRIPT ===== -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-    const images = document.querySelectorAll(".work-card img");
-    const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting){
-                const img = entry.target;
-                const src = img.dataset.src;
-                if(src){
-                    img.src = src;
-                    img.onload = () => img.classList.add("loaded");
-                }
-                obs.unobserve(img);
-            }
-        });
-    }, { rootMargin: "0px 0px 200px 0px" });
 
-    images.forEach(img => observer.observe(img));
+    // Add "loaded" class when each image finishes loading
+    document.querySelectorAll(".work-card img").forEach(img => {
+        if (img.complete) {
+            img.classList.add("loaded");
+        } else {
+            img.addEventListener("load", () => {
+                img.classList.add("loaded");
+            });
+        }
+    });
 
     // Scroll animation
-    const cards = document.querySelectorAll(".work-card.animate-on-scroll");
-    const scrollObserver = new IntersectionObserver((entries, obs) => {
+    const cards = document.querySelectorAll(".work-card");
+
+    const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if(entry.isIntersecting){
                 entry.target.classList.add("visible");
@@ -92,8 +83,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }, { threshold: 0.2 });
 
-    cards.forEach(card => scrollObserver.observe(card));
+    cards.forEach(card => observer.observe(card));
 });
 </script>
+    </div>
+</section>
+
+<!-- ===== SCRIPT ===== -->
 
 {% endblock %}

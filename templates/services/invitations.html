@@ -1,71 +1,129 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="service-detail">
 
-    <!-- HERO -->
-    <div class="hero-compact-small">
+<!-- HERO -->
+<section class="work-banner">
+    <img src="{{ url_for('static', filename='images/invitation1.jpg') }}" alt="Invitations Banner">
+
+    <div class="banner-overlay">
         <h1>Custom Invitations & Cards</h1>
         <p>Wedding invites, birthday cards, event flyers, and greeting cards designed beautifully</p>
-        <a href="https://wa.me/256745938920" class="btn primary">
-            <i class="fab fa-whatsapp"></i> Order on WhatsApp
-        </a>
-    </div>
 
-    <!-- SERVICES GRID -->
-    <div class="section">
-        <h2>Our Invitation Services</h2>
-        <div class="grid">
-            <div class="card">
+        <div style="margin-top:20px;">
+            <a href="https://wa.me/256745938920?text=Hello,%20I%20need%20custom%20invitation%20designs"
+               class="btn">
+                <i class="fab fa-whatsapp"></i> Order on WhatsApp
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section>
+    <div class="services-section">
+        <div class="page-header">
+            <h2>Our Invitation Services</h2>
+            <p>Beautiful designs for every occasion</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card animate">
                 <h3>Wedding Invitations</h3>
                 <p>Elegant, high-quality invitations to make your special day memorable.</p>
             </div>
-            <div class="card">
+
+            <div class="service-card animate">
                 <h3>Birthday & Event Cards</h3>
                 <p>Customizable cards for birthdays, parties, and corporate events.</p>
             </div>
-            <div class="card">
+
+            <div class="service-card animate">
                 <h3>Flyers & Event Invites</h3>
                 <p>Eye-catching flyers to promote events or gatherings.</p>
             </div>
-            <div class="card">
+
+            <div class="service-card animate">
                 <h3>Greeting Cards</h3>
                 <p>Personalized greeting cards for holidays, anniversaries, and special occasions.</p>
             </div>
         </div>
     </div>
+</section>
 
-    <!-- GALLERY -->
-    <div class="section">
+<!-- GALLERY -->
+<section>
+    <div class="work-header">
         <h2>Sample Work</h2>
-        <div class="gallery">
-            <img src="{{ url_for('static', filename='images/invitation1.jpg') }}" alt="Wedding Invitation">
-            <img src="{{ url_for('static', filename='images/invitation2.jpg') }}" alt="Birthday Card">
-            <img src="{{ url_for('static', filename='images/invitation3.jpg') }}" alt="Event Flyer">
-        </div>
+        <p>Examples of our invitation and card designs</p>
     </div>
 
-    <!-- WHY CHOOSE US -->
-    <div class="section highlight">
-        <h2>Why Choose Our Invitations</h2>
-        <div class="grid">
-            <div class="card">✔ High-Quality Printing</div>
-            <div class="card">🎨 Custom Designs</div>
-            <div class="card">⚡ Fast Turnaround</div>
-            <div class="card">💌 Affordable Pricing</div>
+    <div class="work-section">
+        <div class="work-grid">
+            <div class="work-card animate-on-scroll">
+                <img src="{{ url_for('static', filename='images/invitation1.jpg') }}" alt="Sample 1">
+            </div>
+
+            <div class="work-card animate-on-scroll">
+                <img src="{{ url_for('static', filename='images/invitation2.jpg') }}" alt="Sample 2">
+            </div>
+
+            <div class="work-card animate-on-scroll">
+                <img src="{{ url_for('static', filename='images/invitation3.jpg') }}" alt="Sample 3">
+            </div>
         </div>
     </div>
+</section>
 
-    <!-- CTA -->
-    <div class="cta">
-        <h2>Ready to Send Beautiful Invitations?</h2>
-        <p>Contact us today to design and print your perfect invitations.</p>
-        <a href="https://wa.me/256745938920" class="btn primary">
+<!-- WHY CHOOSE US -->
+<section>
+    <div class="services-section">
+        <div class="page-header">
+            <h2>Why Choose Our Invitations</h2>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card animate">
+                <h3>✔ High-Quality Printing</h3>
+                <p>Sharp and premium prints for a professional finish.</p>
+            </div>
+
+            <div class="service-card animate">
+                <h3>🎨 Custom Designs</h3>
+                <p>Fully personalized designs to match your event theme.</p>
+            </div>
+
+            <div class="service-card animate">
+                <h3>⚡ Fast Turnaround</h3>
+                <p>Quick design and printing for urgent events.</p>
+            </div>
+
+            <div class="service-card animate">
+                <h3>💌 Affordable Pricing</h3>
+                <p>Budget-friendly options for all types of events.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="whatsapp-contact">
+    <h2>Ready to Send Beautiful Invitations?</h2>
+    <p>Contact us today to design and print your perfect invitations.</p>
+
+    <div style="margin-top:15px;">
+        <a href="https://wa.me/256745938920?text=Hello,%20I%20want%20custom%20invitations"
+           class="btn">
             Chat on WhatsApp
         </a>
     </div>
-
-    <a href="/services" class="back-btn">← Back to Services</a>
-
 </section>
+
+<!-- BACK BUTTON -->
+<section style="text-align:center;">
+    <a href="/services" class="btn" style="background:#0a1f44;">
+        ← Back to Services
+    </a>
+</section>
+
 {% endblock %}

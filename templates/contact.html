@@ -27,15 +27,11 @@
     <div class="contact-container">
 
         <!-- FORM -->
-        <form method="POST" class="contact-form">
+        <form method="POST" class="contact-form" id="contactForm">
             {{ form.csrf_token }}
 
             <div class="input-group">
                 {{ form.name(class="form-input", placeholder="Your Name", required=True) }}
-            </div>
-
-            <div class="input-group">
-                {{ form.email(class="form-input", placeholder="Your Email", required=True) }}
             </div>
 
             <div class="input-group">
@@ -46,7 +42,7 @@
                 {{ form.message(class="form-input", rows=5, placeholder="Your message or order details", required=True) }}
             </div>
 
-            <button type="submit" class="btn-primary">
+            <button type="submit" class="btn-primary" id="submitBtn">
                 Send Request 🚀
             </button>
         </form>
@@ -75,8 +71,8 @@
    class="whatsapp-float">
     <i class="fab fa-whatsapp"></i>
 </a>
+
 <script>
-    
 const form = document.getElementById("contactForm");
 const btn = document.getElementById("submitBtn");
 
@@ -118,6 +114,6 @@ Message: ${message}`;
     btn.innerText = "Send Request 🚀";
     btn.disabled = false;
 });
-
 </script>
+
 {% endblock %}

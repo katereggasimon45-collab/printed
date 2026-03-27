@@ -1,71 +1,133 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="service-detail">
 
-    <!-- HERO -->
-    <div class="hero-compact-small">
+<!-- HERO (uses work-banner style) -->
+<section class="work-banner">
+    <img src="{{ url_for('static', filename='images/books1.jpg') }}" alt="Printing Banner">
+
+    <div class="banner-overlay">
         <h1>Book & Magazine Printing</h1>
         <p>High-quality printing for books, magazines, catalogs, journals, and newsletters</p>
-        <a href="https://wa.me/256745938920" class="btn primary">
-            <i class="fab fa-whatsapp"></i> Order on WhatsApp
-        </a>
-    </div>
 
-    <!-- SERVICES GRID -->
-    <div class="section">
-        <h2>Our Printing Services</h2>
-        <div class="grid">
-            <div class="card">
+        <div style="margin-top:20px;">
+            <a href="https://wa.me/256745938920?text=Hello,%20I%20need%20book%20and%20magazine%20printing%20services"
+               class="btn">
+                <i class="fab fa-whatsapp"></i> Order on WhatsApp
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section>
+    <div class="services-section">
+        <div class="page-header">
+            <h2>Our Printing Services</h2>
+            <p>Professional solutions for all types of publications</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card animate">
+                <img src="{{ url_for('static', filename='images/books1.jpg') }}" alt="Books">
                 <h3>Books</h3>
                 <p>Custom book printing for authors, publishers, and organizations.</p>
             </div>
-            <div class="card">
+
+            <div class="service-card animate">
+                <img src="{{ url_for('static', filename='images/books2.jpg') }}" alt="Magazines">
                 <h3>Magazines & Catalogs</h3>
                 <p>Professional layouts and vibrant color printing for magazines and catalogs.</p>
             </div>
-            <div class="card">
+
+            <div class="service-card animate">
+                <img src="{{ url_for('static', filename='images/books3.jpg') }}" alt="Journals">
                 <h3>Journals & Notebooks</h3>
                 <p>High-quality journals and notebooks for personal or corporate use.</p>
             </div>
-            <div class="card">
+
+            <div class="service-card animate">
+                <img src="{{ url_for('static', filename='images/books1.jpg') }}" alt="Newsletters">
                 <h3>Newsletters</h3>
                 <p>Engaging newsletters to keep your audience informed and connected.</p>
             </div>
         </div>
     </div>
+</section>
 
-    <!-- GALLERY -->
-    <div class="section">
+<!-- GALLERY -->
+<section>
+    <div class="work-header">
         <h2>Sample Work</h2>
-        <div class="gallery">
-            <img src="{{ url_for('static', filename='images/books1.jpg') }}" alt="Book Printing">
-            <img src="{{ url_for('static', filename='images/books2.jpg') }}" alt="Magazine Printing">
-            <img src="{{ url_for('static', filename='images/books3.jpg') }}" alt="Catalog Printing">
-        </div>
+        <p>Some of our recent printing projects</p>
     </div>
 
-    <!-- WHY CHOOSE US -->
-    <div class="section highlight">
-        <h2>Why Choose Our Book & Magazine Printing</h2>
-        <div class="grid">
-            <div class="card">✔ High-Quality Prints</div>
-            <div class="card">🎨 Custom Layouts</div>
-            <div class="card">⚡ Fast Turnaround</div>
-            <div class="card">💰 Competitive Pricing</div>
+    <div class="work-section">
+        <div class="work-grid">
+            <div class="work-card animate-on-scroll">
+                <img src="{{ url_for('static', filename='images/books1.jpg') }}" alt="Sample 1">
+            </div>
+
+            <div class="work-card animate-on-scroll">
+                <img src="{{ url_for('static', filename='images/books2.jpg') }}" alt="Sample 2">
+            </div>
+
+            <div class="work-card animate-on-scroll">
+                <img src="{{ url_for('static', filename='images/books3.jpg') }}" alt="Sample 3">
+            </div>
         </div>
     </div>
+</section>
 
-    <!-- CTA -->
-    <div class="cta">
-        <h2>Get Your Books & Magazines Printed Today</h2>
-        <p>Contact us for professional printing solutions for your publications.</p>
-        <a href="https://wa.me/256745938920" class="btn primary">
+<!-- WHY CHOOSE US -->
+<section>
+    <div class="services-section">
+        <div class="page-header">
+            <h2>Why Choose Our Printing</h2>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card animate">
+                <h3>✔ High-Quality Prints</h3>
+                <p>Sharp, professional-grade printing for all publications.</p>
+            </div>
+
+            <div class="service-card animate">
+                <h3>🎨 Custom Layouts</h3>
+                <p>We design layouts tailored to your brand and content.</p>
+            </div>
+
+            <div class="service-card animate">
+                <h3>⚡ Fast Turnaround</h3>
+                <p>Quick delivery without compromising quality.</p>
+            </div>
+
+            <div class="service-card animate">
+                <h3>💰 Competitive Pricing</h3>
+                <p>Affordable pricing for individuals and businesses.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="whatsapp-contact">
+    <h2>Get Your Books & Magazines Printed Today</h2>
+    <p>Contact us for professional printing solutions</p>
+
+    <div style="margin-top:15px;">
+        <a href="https://wa.me/256745938920?text=Hello,%20I%20want%20to%20print%20books%20or%20magazines"
+           class="btn">
             Chat on WhatsApp
         </a>
     </div>
-
-    <a href="/services" class="back-btn">← Back to Services</a>
-
 </section>
+
+<!-- BACK BUTTON -->
+<section style="text-align:center;">
+    <a href="/services" class="btn" style="background:#0a1f44;">
+        ← Back to Services
+    </a>
+</section>
+
 {% endblock %}

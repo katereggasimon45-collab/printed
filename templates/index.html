@@ -53,44 +53,36 @@
 
 {% block scripts %}
 <script>
+    
 document.addEventListener("DOMContentLoaded", function () {
 
     // ===== HERO SLIDER =====
     const slides = document.querySelectorAll('.hero-slider img');
     let current = 0;
-    if(slides.length > 0){
+
+    if (slides.length > 0) {
         setInterval(() => {
             slides[current].classList.remove('active');
             current = (current + 1) % slides.length;
             slides[current].classList.add('active');
-        }, 5000);
+        }, 4000); // smoother faster transition
     }
 
-    // ===== SERVICES BUTTON REVEAL =====
+    // ===== SERVICES BUTTON =====
     const btn = document.getElementById("services-btn");
     const section = document.getElementById("services-section");
-    if(btn && section){
-        section.style.display = "none"; // hide initially
-        btn.addEventListener("click", function(e){
+
+    if (btn && section) {
+        section.style.display = "none";
+
+        btn.addEventListener("click", function (e) {
             e.preventDefault();
             section.style.display = "block";
-            section.classList.add("visible");
             section.scrollIntoView({ behavior: "smooth" });
         });
     }
 
-    // ===== FADE-IN ON SCROLL =====
-    const faders = document.querySelectorAll('.fade-in, .work-card, #services-section .service-card');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting){
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.2 });
-
-    faders.forEach(fader => observer.observe(fader));
-
 });
 </script>
+
 {% endblock %}
